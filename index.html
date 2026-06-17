@@ -414,7 +414,7 @@ function addAssistantBubble(typing) {
 async function callAPI(messages) {
   const msgs = [{ role: 'user', content: 'begin' }];
   for (const m of messages) msgs.push({ role: m.role, content: m.content });
-  const r = await fetch('https://api.anthropic.com/v1/messages', {
+  const r = await fetch('/.netlify/functions/chat', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
