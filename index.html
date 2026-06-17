@@ -219,6 +219,29 @@
 </style>
 </head>
 <body>
+
+<div id="password-screen" style="position:fixed;inset:0;background:#003875;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;font-family:Arial,sans-serif;">
+  <div style="background:#fff;border-radius:10px;padding:40px 32px;max-width:360px;width:90%;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.2);">
+    <div style="font-size:2rem;margin-bottom:8px;">🎓</div>
+    <h2 style="color:#003875;margin-bottom:4px;font-size:1.2rem;">The Historical Interrogator</h2>
+    <p style="color:#666;font-size:0.85rem;margin-bottom:24px;">האוניברסיטה העברית בירושלים</p>
+    <input type="password" id="pwd-input" placeholder="הכנס/י סיסמה / Enter password" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:1rem;margin-bottom:10px;text-align:center;" onkeydown="if(event.key==='Enter')checkPwd()" />
+    <div id="pwd-error" style="color:#c0392b;font-size:0.82rem;margin-bottom:10px;display:none;">סיסמה שגויה / Wrong password</div>
+    <button onclick="checkPwd()" style="width:100%;background:#003875;color:#fff;border:none;border-radius:6px;padding:11px;font-size:1rem;cursor:pointer;">כניסה / Enter</button>
+  </div>
+</div>
+<script>
+function checkPwd(){
+  if(document.getElementById('pwd-input').value==='evilbot2026'){
+    document.getElementById('password-screen').style.display='none';
+  } else {
+    document.getElementById('pwd-error').style.display='block';
+    document.getElementById('pwd-input').value='';
+    document.getElementById('pwd-input').focus();
+  }
+}
+</script>
+
 <div id="app">
 
   <div id="header">
