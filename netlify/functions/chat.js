@@ -4,6 +4,8 @@ exports.handler = async function(event) {
   }
   try {
     const body = JSON.parse(event.body);
+    // Force non-streaming so we can return plain JSON
+    body.stream = false;
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -16,11 +18,10 @@ exports.handler = async function(event) {
     const data = await response.json();
     if (!response.ok) {
       console.error('Anthropic error:', JSON.stringify(data));
-      return { statusCode: response.status, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(data) };
     }
     return {
-      statusCode: 200,
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      statusCode: response.status,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     };
   } catch (err) {
