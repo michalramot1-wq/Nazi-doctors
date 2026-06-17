@@ -262,6 +262,7 @@ function checkPwd(){
     <div id="toolbar">
       <button class="tool-btn" onclick="resetSession()">↺ שיחה חדשה / New session</button>
       <button class="tool-btn" onclick="exportTranscript()">⬇ ייצוא שיחה / Export transcript</button>
+      <button class="tool-btn" onclick="endAndReflect()" style="font-weight:700; background:#003875; color:#fff;">✓ סיום ותחקיר / End &amp; reflect</button>
       <button class="tool-btn" onclick="showHelp()" style="font-weight:700;">? עזרה / Help</button>
     </div>
     <div id="input-row">
@@ -505,6 +506,26 @@ async function sendMessage() {
   userInput.value = ''; userInput.style.height = 'auto';
   addUserMsg(text); history.push({ role: 'user', content: text });
 
+  streaming = true; sendBtn.disabled = true;
+  const bubble = addAssistantBubble(true);
+  try {
+    const resp = await callAPI(buildMessages());
+    const full = await streamToElement(resp, bubble);
+    history.push({ role: 'assistant', content: full });
+    saveSession();
+  } catch(err) {
+    bubble.innerHTML = `<span style="color:#b03030">Error: ${esc(err.message)}</span>`;
+    history.pop();
+  }
+  streaming = false; sendBtn.disabled = false; userInput.focus();
+}
+
+async function endAndReflect() {
+  if (streaming) return;
+  if (history.length < 2) { addSysMsg('אין שיחה לסכם עדיין. / No conversation to reflect on yet.'); return; }
+  userInput.value = '';
+  addUserMsg('סיום ותחקיר / End & reflect');
+  history.push({ role: 'user', content: 'The student has chosen to end the simulation. Please now step fully out of character and enter Phase 3: the educational debrief. Summarize what happened in this conversation, what the figure\'s rationalizations revealed, the ethical principles at stake, connections to the Nuremberg Trials and medical ethics, and invite the student to reflect on what challenged them most.' });
   streaming = true; sendBtn.disabled = true;
   const bubble = addAssistantBubble(true);
   try {
