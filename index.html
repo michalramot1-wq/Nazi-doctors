@@ -523,6 +523,8 @@ async function sendMessage() {
 async function endAndReflect() {
   if (streaming) return;
   if (history.length < 2) { addSysMsg('אין שיחה לסכם עדיין. / No conversation to reflect on yet.'); return; }
+  const confirmed = confirm('End the interview and move to the educational debrief? This cannot be undone.\n\nלסיים את הראיון ולעבור לתחקיר הלימודי? לא ניתן לבטל.');
+  if (!confirmed) return;
   userInput.value = '';
   addUserMsg('סיום ותחקיר / End & reflect');
   history.push({ role: 'user', content: 'The student has chosen to end the simulation. Please now step fully out of character and enter Phase 3: the educational debrief. Summarize what happened in this conversation, what the figure\'s rationalizations revealed, the ethical principles at stake, connections to the Nuremberg Trials and medical ethics, and invite the student to reflect on what challenged them most.' });
