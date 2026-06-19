@@ -110,12 +110,21 @@ function checkPwd(){
   </div>
 
   <div id="chat-area" role="log" aria-live="polite"><div class="msg assistant"><div class="bubble opening" style="text-align: center;">
-    <div class="opening-title">🎓 סימולציית ראיון עם דמות / Historical Figure Interview Simulation 🎓</div>
+    <div class="opening-title">🎓 סימולציית ראיון עם דמות / Nazi Doctor Figure Interview Simulation 🎓</div>
     <div class="opening-note" style="font-weight:700; color:#6b2737;"><span dir="rtl">⚠️ חשוב לדעת: מדובר בסימולציה חינוכית לצורכי תרגול בלבד.</span><br>⚠️ Note: This is an educational simulation for practice purposes only.</div>
-    <div class="opening-note" style="font-size:0.84rem; color:#3a4255;">
-      <span dir="rtl">ניתן לבחור דמות ספציפית (למשל: גנגיס חאן, היטלר) או כללית (למשל: טרוריסט, סוחר עבדים).<br>אין צורך לבחור מְבַצֵּעַ — אפשר לבחור משתף פעולה, ממלא הוראות, או צופה מן הצד.<br>להיות משתף פעולה, ממלא הוראות, או צופה עשוי להיות סוג מיוחד של רשע.</span><br><br>
-      You can choose a specific person (e.g. Genghis Khan, Hitler) or a generalized person (a terrorist, a slave trader).<br>
-      You do not have to choose a perpetrator — you can choose a collaborator, an obedient follower, or a bystander.<br>Being a collaborator, a person following directives, or a bystander may be a special kind of "evil" actor.
+    <div class="opening-note" style="font-size:0.84rem; color:#3a4255; text-align:right; direction:rtl;">
+      <strong>לעבודה עם הבוט יש 3 חלקים:</strong><br><br>
+      1. בחרו את הדמות אותה אתם רוצים לראיין וכתבו (בכל שפה): <em>אני רוצה לראיין את…</em><br>
+      אפשר לבחור משתף פעולה, ממלא הוראות, או צופה מן הצד. הבוט יענה לכם בשם הדמות שבחרתם.<br><br>
+      2. מפה אתם מוזמנים לשאול כרצונכם — רצוי לשאול שאלות שמעמיקות את הדילמה האתית, למשל: מה הייתה ההצדקה שלך למעשים? האם היו רגעים שבהם יכולת לבחור אחרת? נסו לשאול לפחות 8–10 שאלות.<br><br>
+      3. בתום השיחה, לחצו על הכפתור במרכז למטה: <strong>סיום ותחקיר / End &amp; Reflect</strong> — ותעברו לשיחת רפלקציה שתנתח את השיח שלכם עם הדמות.
+    </div>
+    <div class="opening-note" style="font-size:0.84rem; color:#3a4255; text-align:left; direction:ltr; margin-top:12px;">
+      <strong>Working with the Bot:</strong><br><br>
+      1. Choose a figure you would like to interview. Write (in any language): <em>I would like to interview…</em><br>
+      You may choose a perpetrator, collaborator, order-follower, or bystander.<br><br>
+      2. Ask the figure questions — focus on ethical dilemmas, responsibility, justification, and moments of choice. Please ask at least 8–10 questions.<br><br>
+      3. When you finish, click <strong>End &amp; Reflect / סיום ותחקיר</strong> at the bottom. The bot will guide you through a reflective debrief about your conversation.
     </div>
     <div class="opening-prompt"><span dir="rtl">את מי תרצה/י לראיין היום?</span><br>Who would you like to interview today?</div>
   </div></div></div>
@@ -1166,12 +1175,21 @@ function showOpeningLocally() {
   bubble.classList.add('opening');
   bubble.style.textAlign = 'center';
   bubble.innerHTML = `
-    <div class="opening-title">🎓 סימולציית ראיון עם דמות / Historical Figure Interview Simulation 🎓</div>
+    <div class="opening-title">🎓 סימולציית ראיון עם דמות / Nazi Doctor Figure Interview Simulation 🎓</div>
     <div class="opening-note" style="font-weight:700; color:#6b2737;"><span dir="rtl">⚠️ חשוב לדעת: מדובר בסימולציה חינוכית לצורכי תרגול בלבד.</span><br>⚠️ Note: This is an educational simulation for practice purposes only.</div>
-    <div class="opening-note" style="font-size:0.84rem; color:#3a4255;">
-      <span dir="rtl">ניתן לבחור דמות ספציפית (למשל: גנגיס חאן, היטלר) או כללית (למשל: טרוריסט, סוחר עבדים).<br>אין צורך לבחור מְבַצֵּעַ — אפשר לבחור משתף פעולה, ממלא הוראות, או צופה מן הצד.<br>להיות משתף פעולה, ממלא הוראות, או צופה עשוי להיות סוג מיוחד של רשע.</span><br><br>
-      You can choose a specific person (e.g. Genghis Khan, Hitler) or a generalized person (a terrorist, a slave trader).<br>
-      You do not have to choose a perpetrator — you can choose a collaborator, an obedient follower, or a bystander.<br>Being a collaborator, a person following directives, or a bystander may be a special kind of "evil" actor.
+    <div class="opening-note" style="font-size:0.84rem; color:#3a4255; text-align:right; direction:rtl;">
+      <strong>לעבודה עם הבוט יש 3 חלקים:</strong><br><br>
+      1. בחרו את הדמות אותה אתם רוצים לראיין וכתבו (בכל שפה): <em>אני רוצה לראיין את…</em><br>
+      אפשר לבחור משתף פעולה, ממלא הוראות, או צופה מן הצד. הבוט יענה לכם בשם הדמות שבחרתם.<br><br>
+      2. מפה אתם מוזמנים לשאול כרצונכם — רצוי לשאול שאלות שמעמיקות את הדילמה האתית, למשל: מה הייתה ההצדקה שלך למעשים? האם היו רגעים שבהם יכולת לבחור אחרת? נסו לשאול לפחות 8–10 שאלות.<br><br>
+      3. בתום השיחה, לחצו על הכפתור במרכז למטה: <strong>סיום ותחקיר / End &amp; Reflect</strong> — ותעברו לשיחת רפלקציה שתנתח את השיח שלכם עם הדמות.
+    </div>
+    <div class="opening-note" style="font-size:0.84rem; color:#3a4255; text-align:left; direction:ltr; margin-top:12px;">
+      <strong>Working with the Bot:</strong><br><br>
+      1. Choose a figure you would like to interview. Write (in any language): <em>I would like to interview…</em><br>
+      You may choose a perpetrator, collaborator, order-follower, or bystander.<br><br>
+      2. Ask the figure questions — focus on ethical dilemmas, responsibility, justification, and moments of choice. Please ask at least 8–10 questions.<br><br>
+      3. When you finish, click <strong>End &amp; Reflect / סיום ותחקיר</strong> at the bottom. The bot will guide you through a reflective debrief about your conversation.
     </div>
     <div class="opening-prompt"><span dir="rtl">את מי תרצה/י לראיין היום?</span><br>Who would you like to interview today?</div>
   `;
