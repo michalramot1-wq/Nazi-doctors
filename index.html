@@ -415,21 +415,35 @@ function addAssistantBubble(typing) {
 async function callAPI(messages) {
   const msgs = [{ role: 'user', content: 'begin' }];
   for (const m of messages) msgs.push({ role: m.role, content: m.content });
-  const r = await fetch('/.netlify/functions/chat', {
+  const r = await fetch('/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ model: 'claude-sonnet-4-5', max_tokens: 2048, system: SYSTEM, messages: msgs })
   });
-  const data = await r.json();
-  if (!r.ok) throw new Error(data?.error?.message || `HTTP ${r.status}`);
-  return data;
+  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(e?.error?.message || `HTTP ${r.status}`); }
+  return r;
 }
 
 async function streamToElement(resp, bubble) {
-  const text = resp?.content?.[0]?.text || '';
-  bubble.innerHTML = formatContent(text);
-  scrollBottom();
-  return text;
+  const reader = resp.body.getReader(), dec = new TextDecoder();
+  let buf = '', full = '';
+  bubble.innerHTML = '';
+  while (true) {
+    const { done, value } = await reader.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    const lines = buf.split('\n'); buf = lines.pop();
+    for (const line of lines) {
+      if (!line.startsWith('data: ')) continue;
+      const data = line.slice(6).trim(); if (data === '[DONE]') continue;
+      try {
+        const obj = JSON.parse(data);
+        if (obj.type === 'content_block_delta' && obj.delta?.type === 'text_delta') {
+          full += obj.delta.text; bubble.innerHTML = formatContent(full); scrollBottom();
+        }
+      } catch(e) {}
+    }
+  }
+  return full;
 }
 
 function buildMessages() {
