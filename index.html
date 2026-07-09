@@ -8,12 +8,12 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --huji-blue: #003875; --huji-blue-mid: #0050a0; --huji-blue-light: #dce8f5;
+    --huji-blue: #111111; --huji-blue-mid: #333333; --huji-blue-light: #ebebeb;
     --huji-maroon: #6b2737;
     --bg: #f4f6f9; --paper: #ffffff; --border: #d0d8e4; --border-dark: #b0bcd0;
     --ink: #1a1e26; --ink-mid: #3a4255; --ink-light: #7a859a;
     --user-bg: #ebebeb; --user-text: #222222;
-      --shadow-sm: 0 1px 3px rgba(0,56,117,0.08); --shadow-md: 0 2px 16px rgba(0,56,117,0.12);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 2px 16px rgba(0,0,0,0.12);
   }
   html, body { height: 100%; background: var(--bg); color: var(--ink); font-family: Arial, 'Arial Hebrew', sans-serif; font-size: 16px; direction: ltr; text-align: left; }
   #app { display: flex; flex-direction: column; height: 100vh; max-width: 840px; margin: 0 auto; background: var(--paper); box-shadow: var(--shadow-md); }
@@ -59,7 +59,7 @@
   .tool-btn:hover { border-color: var(--huji-blue); color: var(--huji-blue); background: var(--huji-blue-light); }
   #input-row { display: flex; gap: 8px; align-items: flex-end; }
   #user-input { flex: 1; background: #ebebeb; border: 1px solid #cccccc; border-radius: 6px; color: var(--ink); font-family: Arial, 'Arial Hebrew', sans-serif; font-size: 0.98rem; padding: 0.55rem 1rem; resize: none; outline: none; line-height: 1.5; min-height: 44px; max-height: 140px; transition: border-color 0.15s, box-shadow 0.15s; }
-  #user-input:focus { border-color: var(--huji-blue-mid); box-shadow: 0 0 0 2px rgba(0,80,160,0.1); background: var(--paper); }
+  #user-input:focus { border-color: var(--huji-blue-mid); box-shadow: 0 0 0 2px rgba(0,0,0,0.08); background: var(--paper); }
   #user-input::placeholder { color: #b0bac8; }
   #send-btn { background: var(--huji-blue); color: #fff; border: none; border-radius: 6px; padding: 0 1.3rem; font-family: Arial, sans-serif; font-size: 0.88rem; font-weight: 700; cursor: pointer; height: 44px; white-space: nowrap; transition: background 0.15s; }
   #send-btn:hover { background: var(--huji-blue-mid); }
@@ -75,14 +75,14 @@
 </style>
 </head>
 <body>
-<div id="password-screen" style="position:fixed;inset:0;background:#003875;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;font-family:Arial,sans-serif;">
+<div id="password-screen" style="position:fixed;inset:0;background:#111111;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;font-family:Arial,sans-serif;">
   <div style="background:#fff;border-radius:10px;padding:40px 32px;max-width:360px;width:90%;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.2);">
     <div style="font-size:2rem;margin-bottom:8px;">&#127891;</div>
-    <h2 style="color:#003875;margin-bottom:4px;font-size:1.2rem;">The Historical Interrogator</h2>
+    <h2 style="color:#111111;margin-bottom:4px;font-size:1.2rem;">The Historical Interrogator</h2>
     <p style="color:#666;font-size:0.85rem;margin-bottom:24px;">&#1492;&#1488;&#1493;&#1504;&#1497;&#1489;&#1512;&#1505;&#1497;&#1496;&#1492; &#1492;&#1506;&#1489;&#1512;&#1497;&#1514; &#1489;&#1497;&#1512;&#1493;&#1513;&#1500;&#1497;&#1501;</p>
     <input type="password" id="pwd-input" placeholder="&#1492;&#1499;&#1504;&#1505;/&#1497; &#1505;&#1497;&#1505;&#1502;&#1488; / Enter password" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:1rem;margin-bottom:10px;text-align:center;" onkeydown="if(event.key==='Enter')checkPwd()" />
     <div id="pwd-error" style="color:#c0392b;font-size:0.82rem;margin-bottom:10px;display:none;">&#1505;&#1497;&#1505;&#1502;&#1488; &#1513;&#1490;&#1493;&#1497;&#1492; / Wrong password</div>
-    <button onclick="checkPwd()" style="width:100%;background:#003875;color:#fff;border:none;border-radius:6px;padding:11px;font-size:1rem;cursor:pointer;">&#1499;&#1504;&#1497;&#1505;&#1492; / Enter</button>
+    <button onclick="checkPwd()" style="width:100%;background:#111111;color:#fff;border:none;border-radius:6px;padding:11px;font-size:1rem;cursor:pointer;">&#1499;&#1504;&#1497;&#1505;&#1492; / Enter</button>
   </div>
 </div>
 <script>
@@ -148,21 +148,21 @@ function checkPwd(){
 <div id="help-overlay" onclick="hideHelp()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center;">
   <div onclick="event.stopPropagation()" style="background:#fff; border-radius:8px; max-width:620px; width:90%; margin:auto; padding:2rem; box-shadow:0 4px 32px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; font-family:Arial,&#39;Arial Hebrew&#39;,sans-serif;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem;">
-      <h2 style="font-size:1.05rem; color:#003875;">? עזרה / Help</h2>
+      <h2 style="font-size:1.05rem; color:#111111;">? עזרה / Help</h2>
       <button onclick="hideHelp()" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:#7a859a; line-height:1;">×</button>
     </div>
     <div style="border-bottom:1px solid #d0d8e4; margin-bottom:1rem; padding-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">🎓 על הסימולטור / About the simulator</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">🎓 על הסימולטור / About the simulator</p>
       <p dir="rtl" style="margin-bottom:0.5rem;">כלי לתרגול ראיונות עם דמויות היסטוריות. את/ה שואל/ת שאלות; הדמות עונה מתוך הרגע ההיסטורי שלה ומתוך תפיסת עולמה.</p>
       <p>A tool for interviewing historical figures. You ask questions; the figure answers from within their own historical moment and worldview.</p>
     </div>
     <div style="border-bottom:1px solid #d0d8e4; margin-bottom:1rem; padding-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">👤 איך מתחילים / How to start</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">👤 איך מתחילים / How to start</p>
       <p dir="rtl" style="margin-bottom:0.5rem;">הקלד/י את שם הדמות שאת/ה רוצה לראיין — ספציפית (למשל "היטלר", "סטלין", "בן גוריון") או כללית (למשל "חייל רומי", "סוחר עבדים").</p>
       <p>Type the name of the figure you want to interview — specific (e.g. "Hitler", "Stalin", "Ben Gurion") or general (e.g. "A Roman soldier", "A slave trader").</p>
     </div>
     <div style="border-bottom:1px solid #d0d8e4; margin-bottom:1rem; padding-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">🧭 ארבעה סוגי דמויות / Four types of figures</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">🧭 ארבעה סוגי דמויות / Four types of figures</p>
       <p dir="rtl" style="margin-bottom:0.3rem;">לא חובה לבחור מבצע. את/ה יכול/ה לבחור כל אחד מארבעה סוגים:</p>
       <p style="margin-bottom:0.5rem;">You don't have to choose a perpetrator. You can choose any of four types:</p>
       <p dir="rtl" style="margin-bottom:0.2rem;"><strong>מבצע אידיאולוגי</strong> — מי שביצע או הורה על זוועה מתוך תפיסת עולם או מטרה (אייכמן, פול פוט).</p>
@@ -175,7 +175,7 @@ function checkPwd(){
       <p><strong>Follower under orders</strong> — soldier, orderly, driver, clerk whose hands carried out harm that someone else designed and ordered (Mengele orderly, bulldozer driver demolishing homes).</p>
     </div>
     <div style="border-bottom:1px solid #d0d8e4; margin-bottom:1rem; padding-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">🔄 שלושה שלבים / Three phases</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">🔄 שלושה שלבים / Three phases</p>
       <p dir="rtl" style="margin-bottom:0.3rem;"><strong>שלב 1 (תורות 1–10):</strong> את/ה מראיין/ת את הדמות. היא עונה מתוך המציאות ההיסטורית שלה — ללא חוכמה שבדיעבד, ללא שיפוט מודרני. הטון מתחיל להתחדד החל מתור 7 לערך.</p>
       <p style="margin-bottom:0.5rem;"><strong>Phase 1 (turns 1–10):</strong> You interview the figure. They answer from within their historical reality — no hindsight, no modern judgement. From around turn 7 the tone begins to sharpen.</p>
       <p dir="rtl" style="margin-bottom:0.3rem;"><strong>שלב 2 (תורות 11–20):</strong> הדמות מסבה את השאלות אליך. עדיין מתוך הדמות, אבל מודעת לכך שאת/ה בהווה. אופי האתגר תלוי בסוג הדמות — מבצע אידיאולוגי או מקבל החלטות צבאיות מצביעים על זוועות בעולם שלך; צופה מן הצד שואל אם פעם הסתכלת לכיוון השני; ממלא הוראות שואל מתי בעצם הפסקת לשאול "למה".</p>
@@ -184,12 +184,12 @@ function checkPwd(){
       <p><strong>Debrief:</strong> The simulation ends and an educational facilitator (not the figure) reflects with you Socratically on what happened. It begins automatically after turn 20, or whenever you press <strong>"End &amp; reflect"</strong> / type <strong>/debrief</strong>.</p>
     </div>
     <div style="border-bottom:1px solid #d0d8e4; margin-bottom:1rem; padding-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">💾 שמירה / Saving</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">💾 שמירה / Saving</p>
       <p dir="rtl" style="margin-bottom:0.5rem;">השיחה נשמרת אוטומטית בדפדפן ומשוחזרת כשפותחים מחדש. ניתן ללחוץ "שיחה חדשה" כדי להתחיל מחדש.</p>
       <p>The conversation is saved automatically in your browser and restored when you reopen. Click "New session" to start fresh.</p>
     </div>
     <div style="margin-bottom:1rem;">
-      <p style="font-weight:700; color:#003875; margin-bottom:0.4rem;">🔚 סיום וייצוא / Ending and exporting</p>
+      <p style="font-weight:700; color:#111111; margin-bottom:0.4rem;">🔚 סיום וייצוא / Ending and exporting</p>
       <p dir="rtl" style="margin-bottom:0.5rem;">הסימולציה עוברת לתחקיר אוטומטית אחרי תור 20. אפשר גם לסיים מוקדם בלחיצה על <strong>"סיום ותחקיר"</strong> או בהקלדת <strong>/debrief</strong>. השתמש/י ב<strong>"ייצוא שיחה"</strong> כדי לשמור את כל השיחה.</p>
       <p>The simulation moves to debrief automatically after turn 20. You can also end early with the <strong>"End &amp; reflect"</strong> button or by typing <strong>/debrief</strong>. Use <strong>Export transcript</strong> to save the full conversation.</p>
     </div>
@@ -197,7 +197,7 @@ function checkPwd(){
       <p style="margin-bottom:0.3rem;">© Developed by Prof. Tom Gumpel, Seymour Fox School of Education, The Hebrew University, as a teaching aid for the course: The Psychology of Evil.</p>
       <p>Questions / comments: <a href="mailto:tom.gumpel@mail.huji.ac.il" style="color:#7a859a;">tom.gumpel@mail.huji.ac.il</a></p>
     </div>
-    <button onclick="hideHelp()" style="width:100%; background:#003875; color:#fff; border:none; border-radius:6px; padding:0.6rem; font-family:Arial,sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; margin-top:1rem;">סגור / Close</button>
+    <button onclick="hideHelp()" style="width:100%; background:#111111; color:#fff; border:none; border-radius:6px; padding:0.6rem; font-family:Arial,sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; margin-top:1rem;">סגור / Close</button>
   </div>
 </div>
 
@@ -1461,7 +1461,7 @@ function exportTranscript() {
     if (m.role === 'user') {
       const dir = /[\u0590-\u05FF]/.test(m.content) ? 'rtl' : 'ltr';
       rows += `<tr>
-        <td style="font-weight:bold; color:#003875; white-space:nowrap; padding:6px 12px 6px 0; vertical-align:top; font-family:Arial,sans-serif; font-size:11pt;">You</td>
+        <td style="font-weight:bold; color:#111111; white-space:nowrap; padding:6px 12px 6px 0; vertical-align:top; font-family:Arial,sans-serif; font-size:11pt;">You</td>
         <td style="padding:6px 0; font-family:Arial,sans-serif; font-size:11pt; direction:${dir};">${esc(m.content).replace(/\n/g,'<br>')}</td>
       </tr>`;
     } else {
@@ -1482,7 +1482,7 @@ function exportTranscript() {
 <meta charset="UTF-8">
 <style>
   body { font-family: Arial, sans-serif; font-size: 11pt; margin: 2cm; color: #1a1e26; }
-  h1 { font-size: 14pt; color: #003875; border-bottom: 2px solid #003875; padding-bottom: 6px; margin-bottom: 4px; }
+  h1 { font-size: 14pt; color: #111111; border-bottom: 2px solid #111111; padding-bottom: 6px; margin-bottom: 4px; }
   .meta { font-size: 9pt; color: #7a859a; margin-bottom: 24px; }
   table { border-collapse: collapse; width: 100%; }
   tr { border-bottom: 1px solid #e8edf4; }
